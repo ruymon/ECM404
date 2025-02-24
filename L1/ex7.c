@@ -23,8 +23,24 @@
  *
  */
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+  int bill_value;
+  printf("Total: ");
+  scanf("%i", &bill_value);
+
+  int fity_bill_amount = bill_value / 50;
+  int fity_bill_amount_remainder = bill_value % 50;
+
+  int ten_bill_amount = fity_bill_amount_remainder / 10;
+  int ten_bill_amount_remainder = fity_bill_amount_remainder % 10;
+
+  int two_bill_amount = ten_bill_amount_remainder / 2;
+  int two_bill_amount_remainder = ten_bill_amount_remainder % 2;
+
+  int one_bill_amount = two_bill_amount_remainder;
+
+  printf("N50: %i N10: %i N2: %i T: %i", fity_bill_amount, ten_bill_amount, two_bill_amount, one_bill_amount);
 
   return 0;
 }

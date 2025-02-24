@@ -25,8 +25,37 @@
  *
  */
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+  int six_digit_value;
+
+  printf("Digite um numero: ");
+  scanf("%i", &six_digit_value);
+
+  int sixth_digit = six_digit_value / 100000;
+  int sixth_digit_remainder = (six_digit_value % 100000);
+
+  int fith_digit = sixth_digit_remainder / 10000;
+  int fith_digit_remainder = (sixth_digit_remainder % 10000);
+
+  int forth_digit = fith_digit_remainder / 1000;
+  int forth_digit_remainder = fith_digit_remainder % 1000;
+
+  int third_digit = forth_digit_remainder / 100;
+  int third_digit_remainder = forth_digit_remainder % 100;
+
+  int second_digit = third_digit_remainder / 10;
+  int second_digit_remainder = third_digit_remainder % 10;
+
+  int first_digit = second_digit_remainder / 1;
+
+  printf("%i%i%i%i%i%i",
+         (sixth_digit >= 5) ? 1 : 0,
+         (fith_digit >= 5) ? 1 : 0,
+         (forth_digit >= 5) ? 1 : 0,
+         (third_digit >= 5) ? 1 : 0,
+         (second_digit >= 5) ? 1 : 0,
+         (first_digit >= 5) ? 1 : 0);
 
   return 0;
 }

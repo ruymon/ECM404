@@ -22,8 +22,23 @@
  * OBS: Utilize duas casas decimais para representar valores flutuantes.
  */
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+  int r1, r2;
+
+  printf("R1:");
+  scanf("%i", &r1);
+
+  printf("R2:");
+  scanf("%i", &r2);
+
+  int s = r1 + r2;
+
+  float r1_f = r1 * 1.0;
+  float r2_f = r2 * 1.0;
+  float p = (r1_f * r2_f) / (r1_f + r2_f);
+
+  printf("S: %i P: %.2f\n", s, p);
 
   return 0;
 }

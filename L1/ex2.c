@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
   int a;
   printf("Digite um numero: ");
   // Seu codigo a partir daqui
-  scanf("%d", &a);
-  printf("%d\n", a);
+  scanf("%i", &a);
+  printf("%i\n", a);
 
   return 0;
 }
