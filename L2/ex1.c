@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Enunciado - Fa�a um programa que receba dois n�meros e mostre qual deles
- * � o maior. Caso os n�meros sejam iguais, o programa deve informar o usu�rio.
- * Os n�meros devem ser sempre exibidos com apenas duas casas ap�s a v�rgula.
+/* Enunciado - Faça um programa que receba dois números e mostre qual deles
+ * é o maior. Caso os números sejam iguais, o programa deve informar o usuário.
+ *
+ * Os números devem ser sempre exibidos com apenas duas casas após a vírgula.
+ *
  * Exemplos:
  *
  * Digite um numero: 5
@@ -15,7 +17,18 @@
  * Numeros iguais!
  */
 
-int main()
+void main()
 {
-  return 0;
+  float first_number, second_number;
+
+  printf("Digite um numero: ");
+  scanf("%f", &first_number);
+
+  printf("Digite um numero: ");
+  scanf("%f", &second_number);
+
+  (first_number == second_number) && printf("Numeros iguais! \n");
+  (first_number > second_number) ? printf("%.2f > %.2f \n", first_number, second_number) : printf("%.2f > %.2f \n", second_number, first_number);
+
+  return;
 }
