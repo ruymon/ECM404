@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-/* Enunciado - Faça um programa que receba um número inteiro digitado pelo
- * usuário e retorna se o número é par ou ímpar.
+/* Enunciado - FaÃ§a um programa que receba um nÃºmero inteiro digitado pelo
+ * usuÃ¡rio e retorna se o nÃºmero Ã© par ou Ã­mpar.
  *
  * Exemplos:
  *
@@ -13,7 +14,19 @@
  * Par
  */
 
-int main ()
+bool isNumberOdd(int number)
 {
-  return 0;
+  return (number % 2) == 0;
+}
+
+void main()
+{
+  int value;
+
+  printf("Digite um numero: ");
+  scanf("%i", &value);
+
+  printf(isNumberOdd(value) ? "Par \n" : "Impar \n");
+
+  return;
 }
