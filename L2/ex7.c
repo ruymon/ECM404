@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-/* Enunciado - Em matem·tica, o n˙mero harmÙnico designado por H(n) define-se
- * como sendo a soma da sÈrie harmÙnica:
+/** Enunciado - Em matem√°tica, o n√∫mero harm√¥nico designado por H(n) define-se
+ * como sendo a soma da s√©rie harm√¥nica:
  *
  *                         H(n) = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
  *
- * FaÁa um programa que leia um valor n inteiro e positivo e
+ * @see https://pt.wikipedia.org/wiki/S%C3%A9rie_harm%C3%B3nica_(matem%C3%A1tica)
+ *
+ * Fa√ßa um programa que leia um valor n inteiro e positivo e
  * apresente o valor de H(n) com duas casas decimais
  *
  * Exemplos:
@@ -18,7 +21,42 @@
  * Erro, n menor que 0!
  */
 
-int main()
+bool isNumberPositive(int number)
 {
-    return 0;
+    return number > 0;
+}
+
+bool isInputValueValid(int value)
+{
+    if (!isNumberPositive(value))
+    {
+        printf("Erro, n menor ou igual a 0! \n");
+        return false;
+    }
+
+    return true;
+}
+
+float calculateHarmonicNumber(int number)
+{
+    float iterator, harmonicNumber; // Necess√°rio o `iterator` ser float por ser o divisor (denominador).
+
+    for (iterator = 1.0; iterator <= number; iterator++)
+    {
+        harmonicNumber += (1 / iterator);
+    }
+
+    return harmonicNumber;
+}
+
+void main()
+{
+    int value;
+
+    printf("Digite um valor para n: ");
+    scanf("%i", &value);
+
+    isInputValueValid(value) && printf("%.2f \n", calculateHarmonicNumber(value));
+
+    return;
 }
