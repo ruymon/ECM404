@@ -26,6 +26,7 @@ void main()
     printf("Digite um numero: ");
     scanf("%i", &value);
 
+    // iteration has to start at 1 because you cant divide by zero...
     for (iteration = 1; iteration <= value; iteration++)
     {
         isFullyDivisable(value, iteration) && printf("%i ", iteration);
