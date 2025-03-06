@@ -24,7 +24,38 @@
  * Finalizando o programa!
  */
 
-int main()
+float calculateParallelResistance(float r1, float r2)
 {
-    return 0;
+    return (r1 * r2) / (r1 + r2);
+}
+
+void main()
+{
+    // Start equivalentResistance with a value different than zero.
+    float equivalentResistance = 1;
+
+    do
+    {
+        float firstResistance, secondResistance;
+
+        printf("Digite um valor para R1: ");
+        scanf("%f", &firstResistance);
+
+        printf("Digite um valor para R2: ");
+        scanf("%f", &secondResistance);
+
+        equivalentResistance = calculateParallelResistance(firstResistance, secondResistance);
+
+        if (equivalentResistance != 0)
+        {
+            printf("Resistencia equivalente em paralelo: %.2f \n", equivalentResistance);
+        }
+        else
+        {
+            printf("Finalizando o programa! \n");
+        }
+
+    } while (equivalentResistance != 0);
+
+    return;
 }
