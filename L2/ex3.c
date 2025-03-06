@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-/* Enunciado - Faça um programa que receba um número inteiro e, a seguir,
- * exibe todos os seus possíveis divisores separados apenas por um espaço.
+/* Enunciado - FaÃ§a um programa que receba um nÃºmero inteiro e, a seguir,
+ * exibe todos os seus possÃ­veis divisores separados apenas por um espaÃ§o.
  *
  * Exemplos:
  *
@@ -13,7 +14,22 @@
  * 1 2 3 4 6 12
  */
 
-int main()
+bool isFullyDivisable(int dividend, int divisor)
 {
-    return 0;
+    return (dividend % divisor) == 0;
+}
+
+void main()
+{
+    int value, iteration;
+
+    printf("Digite um numero: ");
+    scanf("%i", &value);
+
+    for (iteration = 1; iteration <= value; iteration++)
+    {
+        isFullyDivisable(value, iteration) && printf("%i ", iteration);
+    }
+
+    return;
 }
