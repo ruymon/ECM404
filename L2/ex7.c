@@ -2,7 +2,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/** Enunciado - Em matemática, o número harmônico designado por H(n) define-se
+/**
+ * Enunciado | Exercício 7
+ *
+ * @details
+ * Em matemática, o número harmônico designado por H(n) define-se
  * como sendo a soma da série harmônica:
  *
  *                         H(n) = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
@@ -12,11 +16,11 @@
  * Faça um programa que leia um valor n inteiro e positivo e
  * apresente o valor de H(n) com duas casas decimais
  *
- * Exemplos:
- *
+ * @example
  * Digite um valor para n: 10
  * 2.93
  *
+ * @example
  * Digite um valor para n: -1
  * Erro, n menor que 0!
  */

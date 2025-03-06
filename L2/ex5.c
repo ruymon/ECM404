@@ -2,25 +2,32 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/* Enunciado - Faça um programa que leia uma data no seguinte formato:
+/**
+ * Enunciado | Exercício 5
+ *
+ * @details
+ * Faça um programa que leia uma data no seguinte formato:
  * D/M/A. O programa deve determinar se a data digitada válida ou não.
  * Lembre-se que Fevereiro tem 29 dias em anos bissextos e 28 dias em anos não
  * bissextos.
  *
- * Exemplos:
- *
+ * @example
  * Data: 22/02/2022
  * Data valida!
  *
+ * @example
  * Data: 29/02/2020
  * Data valida!
  *
+ * @example
  * Data: 29/02/2022
  * Data invalida!
  *
+ * @example
  * Data: 31/06/2022
  * Data invalida!
  *
+ * @example
  * Data: 31/13/2022
  * Data invalida!
  */

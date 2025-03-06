@@ -2,16 +2,21 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/* Enunciado - Faça um programa que receba um número inteiro e, a seguir,
+/**
+ * Enunciado | Exercício 3
+ *
+ * @details
+ * Faça um programa que receba um número inteiro e, a seguir,
  * exibe todos os seus possíveis divisores separados apenas por um espaço.
  *
- * Exemplos:
- *
+ * @example
  * Digite um numero: 7
  * 1 7
  *
+ * @example
  * Digite um numero: 12
  * 1 2 3 4 6 12
+ *
  */
 
 bool isFullyDivisable(int dividend, int divisor)
