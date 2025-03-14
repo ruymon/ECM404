@@ -3,6 +3,8 @@
     ".env.*": "dotenv",
     ".prettierrc": "json",
     "*.css": "tailwindcss",
-    "math.h": "c"
+    "math.h": "c",
+    "stdio.h": "c",
+    "utility": "c"
   }
 }

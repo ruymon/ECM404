@@ -50,7 +50,7 @@ Este repositório inclui um script Python para organizar automaticamente os exer
 2. Navegue até o diretório raiz do repositório
 3. Execute o script:
    ```bash
-   python organize_exercises.py
+   python organize.py
    ```
 
 ### Funcionalidades do Script
@@ -67,12 +67,18 @@ Este repositório inclui um script Python para organizar automaticamente os exer
 
    ```
    Listas disponíveis: L1, L2, L3...
-
-   Opções:
-   1. Organizar todas as listas
-   2. Organizar uma lista específica
    ```
+
+Opções:
+
+1. Organizar todas as listas
+2. Organizar uma lista específica
+3. Remover arquivos .exe de todas as listas
+4. Remover arquivos .exe de uma lista específica
+
+```
 
 2. Escolha a opção desejada e siga as instruções na tela
 3. O script informará sobre cada arquivo movido e diretório removido
 4. Ao final, será exibido um resumo das operações realizadas
+```

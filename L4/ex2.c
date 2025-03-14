@@ -1,45 +1,75 @@
-/*
- * Enunciado:
+/**
+ * Enunciado | Exerc√≠cio 2
+ *
+ * @details
  * Desenvolva um programa capaz de ler n valores inteiros e os insira em um
- * array. A leitura deve ser feita de acordo com o programa feito no ex1.
- * ApÛs a leitura, desenvolva a funÁ„o calcula_media e calcula_dvp
- * para calcular a mÈdia e o desvio padr„o dos valores informados.
+ * array. A leitura deve ser feita de acordo com o programa feito no exerc√≠cio 1.
+ * Ap√≥s a leitura, desenvolva a fun√ß√£o calcula_media e calcula_dvp
+ * para calcular a m√©dia e o desvio padr√£o dos valores informados.
  * O programa principal deve receber os valores lidos pelo array e retornar a
- * mÈdia e o desvio padr„o no seguinte formato: M…DIA +- DVP
+ * m√©dia e o desvio padr√£o no seguinte formato: M√âDIA +- DVP
  *
- * Exemplos:
- *    Digite os valores para o array: 1 2 3 4 5 6 7 -100
- *    4.00 +- 2.0
+ * @example
+ * Digite os valores para o array: 1 2 3 4 5 6 7 -100
+ * 4.00 +- 2.0
  *
- *    Digite os valores para o array: 1 1 1 1 1 1 1 1 1 1 1 -100
- *    1.00 +- 0.0
+ * @example
+ * Digite os valores para o array: 1 1 1 1 1 1 1 1 1 1 1 -100
+ * 1.00 +- 0.0
  *
- *    Digite os valores para o array: 10 20 1 40 50 90 100 -100
- *    44.43 +- 35.6
- *
+ * @example
+ * Digite os valores para o array: 10 20 1 40 50 90 100 -100
+ * 44.43 +- 35.6
  */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h> // A biblioteca math tem pow e sqrt
+#include <math.h>
 
-#define ARRAY_MAX 100 // Valor m·ximo para o tamanho do array. N„o modifique.
+#define ARRAY_MAX 100
 
-/* ProtÛtipos */
-float calcula_media(int array[], int tam_array);
-float calcula_dvp(int array[], int tam_array);
+float calculateAverage(int array[], int arraySize);
+float calculateStandardDeviation(int array[], int arraySize);
 
-int main()
+float calculateAverage(int array[], int arraySize)
 {
-    printf("Hello world!\n");
-    return 0;
+    float sum = 0;
+    for (int i = 0; i < arraySize; i++)
+    {
+        sum += array[i];
+    }
+    return sum / arraySize;
 }
 
-/* ImplementaÁ„o das FunÁıes */
-float calcula_media(int array[], int tam_array) {
-
+float calculateStandardDeviation(int array[], int arraySize)
+{
+    float average = calculateAverage(array, arraySize);
+    float sum = 0;
+    for (int i = 0; i < arraySize; i++)
+    {
+        sum += pow(array[i] - average, 2);
+    }
+    return sqrt(sum / arraySize);
 }
 
-float calcula_dvp(int array[], int tam_array) {
+void main()
+{
+    int array[ARRAY_MAX];
+    int arrayFilledPositionsSize = 0;
 
+    printf("Digite os valores para o array: ");
+
+    while (1)
+    {
+        scanf("%d", &array[arrayFilledPositionsSize]);
+
+        if (array[arrayFilledPositionsSize] == -100)
+        {
+            break;
+        }
+
+        arrayFilledPositionsSize++;
+    }
+
+    printf("%.2f +- %.1f", calculateAverage(array, arrayFilledPositionsSize), calculateStandardDeviation(array, arrayFilledPositionsSize));
 }
