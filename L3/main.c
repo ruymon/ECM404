@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 void sum();
 void subtract();
