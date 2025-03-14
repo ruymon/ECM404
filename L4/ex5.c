@@ -24,15 +24,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define ARRAY_MAX 3
+#define ARRAY_MAX_SIZE 3
 
-int determinante(int matriz[ARRAY_MAX][ARRAY_MAX]);
+int calculateDeterminant(int matriz[ARRAY_MAX_SIZE][ARRAY_MAX_SIZE], int rowsCount, int columnsCount)
+{
+    /**
+     * Observação para eu do futuro:
+     *
+     * Por mais que o exercício garantiu que a matriz é 3x3,
+     * implicando, portanto, que a determinante poderia ser
+     * calculada pelo método de Sarrus, apliquei nesse
+     * algorítimo a expansão de Laplace pois possibilita
+     * a resolução de uma determinante de matriz n dimensional.
+     */
+}
 
 void main()
 {
     printf("Hello world!\n");
-}
-
-int determinante(int matriz[ARRAY_MAX][ARRAY_MAX])
-{
 }
