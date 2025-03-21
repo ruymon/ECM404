@@ -28,18 +28,36 @@
 
 int calculateDeterminant(int matriz[ARRAY_MAX_SIZE][ARRAY_MAX_SIZE], int rowsCount, int columnsCount)
 {
-    /**
-     * Observação para eu do futuro:
-     *
-     * Por mais que o exercício garantiu que a matriz é 3x3,
-     * implicando, portanto, que a determinante poderia ser
-     * calculada pelo método de Sarrus, apliquei nesse
-     * algorítimo a expansão de Laplace pois possibilita
-     * a resolução de uma determinante de matriz n dimensional.
-     */
+    int determinant = 0;
+
+    for (int currentColumn = 0; currentColumn < columnsCount; currentColumn++)
+    {
+        int nextColumn = (currentColumn + 1) % columnsCount;
+        int nextNextColumn = (currentColumn + 2) % columnsCount;
+        
+        int firstProduct = matriz[1][nextColumn] * matriz[2][nextNextColumn];
+        int secondProduct = matriz[1][nextNextColumn] * matriz[2][nextColumn];
+        int cofactor = firstProduct - secondProduct;
+        
+        determinant += matriz[0][currentColumn] * cofactor;
+    }
+
+    return determinant;
 }
 
 void main()
 {
-    printf("Hello world!\n");
+    int matrix[ARRAY_MAX_SIZE][ARRAY_MAX_SIZE];
+
+    for (int currentRow = 0; currentRow < ARRAY_MAX_SIZE; currentRow++)
+    {
+        printf("Digite a linha %i: ", currentRow);
+
+        for (int currentColumn = 0; currentColumn < ARRAY_MAX_SIZE; currentColumn++)
+        {
+            scanf("%i", &matrix[currentRow][currentColumn]);
+        }
+    }
+
+    printf("%d", calculateDeterminant(matrix, ARRAY_MAX_SIZE, ARRAY_MAX_SIZE));
 }

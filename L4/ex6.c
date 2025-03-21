@@ -26,10 +26,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define ARRAY_MAX 3
+#define ARRAY_MAX_SIZE 3
 
-int main()
+void displayMatrix(int matrix[ARRAY_MAX_SIZE][ARRAY_MAX_SIZE], int rowsCount, int columnsCount)
 {
-    printf("Hello world!\n");
-    return 0;
+    printf("[");
+    for (int displayRow = 0; displayRow < rowsCount; displayRow++)
+    {
+        printf("[");
+        for (int displayColumn = 0; displayColumn < columnsCount; displayColumn++)
+        {
+            printf((displayColumn == columnsCount - 1 ? "%i" : "%i, "), matrix[displayRow][displayColumn]);
+        }
+        printf(displayRow == rowsCount - 1 ? "]" : "],\n");
+    }
+    printf("]");
+}
+
+void main()
+{
+    int matrix[ARRAY_MAX_SIZE][ARRAY_MAX_SIZE];
+
+    for (int currentRow = 0; currentRow < ARRAY_MAX_SIZE; currentRow++)
+    {
+        printf("Digite a linha %i: ", currentRow);
+
+        for (int currentColumn = 0; currentColumn < ARRAY_MAX_SIZE; currentColumn++)
+        {
+            scanf("%i", &matrix[currentRow][currentColumn]);
+        }
+    }
+
+    displayMatrix(matrix, ARRAY_MAX_SIZE, ARRAY_MAX_SIZE);
 }
