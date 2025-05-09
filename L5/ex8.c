@@ -27,6 +27,7 @@
 #define ARR_MAX_SIZE 100
 
 void displayNames(char names[MAX_NAMES][ARR_MAX_SIZE]);
+void orderNames(char *names[][]);
 
 int main(int argc, char *argv[])
 {
