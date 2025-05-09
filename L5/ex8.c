@@ -27,7 +27,24 @@
 #define ARR_MAX_SIZE 100
 
 void displayNames(char names[MAX_NAMES][ARR_MAX_SIZE]);
-void orderNames(char *names[][]);
+void orderNames(char names[MAX_NAMES][ARR_MAX_SIZE]);
+
+void orderNames(char names[MAX_NAMES][ARR_MAX_SIZE])
+{
+  char temp[ARR_MAX_SIZE];
+  for (int i = 0; i < MAX_NAMES - 1; ++i)
+  {
+    for (int j = i + 1; j < MAX_NAMES; ++j)
+    {
+      if (strcasecmp(names[i], names[j]) > 0)
+      {
+        strcpy(temp, names[i]);
+        strcpy(names[i], names[j]);
+        strcpy(names[j], temp);
+      }
+    }
+  }
+}
 
 int main(int argc, char *argv[])
 {
@@ -49,6 +66,7 @@ int main(int argc, char *argv[])
     i++;
   }
 
+  orderNames(names);
   displayNames(names);
   return 0;
 }

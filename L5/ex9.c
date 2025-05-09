@@ -1,9 +1,9 @@
 /*
  * Enunciado:
- * Desenvolva um programa capaz de ler uma string digitada pelo usuário e,
- * a seguir, ler um intervalo separado por vírgula que deve ser utilizado para
- * gerar uma substring que começa no começo do intervalo digitado e termina no
- * índice final (intervalo fechado).
+ * Desenvolva um programa capaz de ler uma string digitada pelo usuÃ¡rio e,
+ * a seguir, ler um intervalo separado por vÃ­rgula que deve ser utilizado para
+ * gerar uma substring que comeÃ§a no inÃ­cio do intervalo digitado e termina no
+ * Ã­ndice final (intervalo fechado).
  *
  * Exemplos:
  *
@@ -24,12 +24,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h> // Aqui existe a função tolower. Busque documentação.
 
-#define MAX 100 // Valor máximo para o tamanho do array. Não modifique.
+#define MAX 100
 
-/* Protótipos */
+int main(int argc, char *argv[])
+{
+  char str[MAX];
+  char stepStr[MAX];
+  int start, end;
 
-int main (int argc, char *argv[]){
+  printf("Digite uma string: ");
+  fgets(str, MAX, stdin);
+  str[strcspn(str, "\n")] = '\0';
+
+  printf("Intervalo: ");
+  fgets(stepStr, MAX, stdin);
+  stepStr[strcspn(stepStr, "\n")] = '\0';
+
+  char *token = strtok(stepStr, ",");
+  if (token != NULL)
+    start = atoi(token);
+
+  token = strtok(NULL, ",");
+  if (token != NULL)
+    end = atoi(token);
+
+  for (int i = start; i <= end; ++i)
+  {
+    printf("%c", str[i]);
+  }
+
+  printf("\n");
+
   return 0;
 }

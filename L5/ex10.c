@@ -1,10 +1,10 @@
 /*
  * Enunciado:
- * Desenvolva um programa capaz de ler uma string digitada pelo usu·rio e,
- * a seguir, exibir o maior palÌndromo possÌvel dentro da string digitada.
- * Caso n„o haja nenhum palÌndromo possÌvel, o programa deve alertar o usu·rio.
- * O programa deve desconsiderar diferenÁas entre letras min˙sculas e letras
- * mai˙sculas.
+ * Desenvolva um programa capaz de ler uma string digitada pelo usu√°rio e,
+ * a seguir, exibir o maior pal√≠ndromo poss√≠vel dentro da string digitada.
+ * Caso n√£o haja nenhum pal√≠ndromo poss√≠vel, o programa deve alertar o usu√°rio.
+ * O programa deve desconsiderar diferen√ßas entre letras min√∫sculas e letras
+ * mai√∫sculas.
  *
  * Exemplos:
  *
@@ -18,28 +18,98 @@
  *   dad
  *
  *   Digite uma string: Alexandre
- *   N„o existe nenhum palÌndromo possÌvel
+ *   N√£o existe nenhum pal√≠ndromo poss√≠vel
  *
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h> // Aqui existe a funÁ„o tolower. Busque documentaÁ„o.
+#include <ctype.h>
 
-#define MAX 100 // Valor m·ximo para o tamanho do array. N„o modifique.
+#define MAX 100
 
-/* ProtÛtipos */
-void ler_string(char s[MAX]);
-void inverte_string(char s[MAX], char s_inv[MAX]);
-void substring(char destino[MAX], char origem[MAX], int comeco, int fim);
-int verifica_palindromo(char s[MAX]);
-void maior_palindromo(char s[MAX], char s2[MAX]);
-void to_lower_string(char s[MAX]);
+void toLowerString(char s[MAX]);
+int isPalindrome(char s[MAX]);
+void substring(char dest[MAX], char src[MAX], int start, int end);
+void findLargestPalindrome(char input[MAX], char result[MAX]);
 
-int main (int argc, char *argv[]){
+int main(int argc, char *argv[])
+{
+  char input[MAX];
+  char largestPalindrome[MAX];
 
+  printf("Digite uma string: ");
+  fgets(input, MAX, stdin);
+  input[strcspn(input, "\n")] = '\0';
+
+  findLargestPalindrome(input, largestPalindrome);
+
+  if (strlen(largestPalindrome) > 0)
+  {
+    printf("%s\n", largestPalindrome);
+  }
+  else
+  {
+    printf("N√£o existe nenhum pal√≠ndromo poss√≠vel\n");
+  }
 
   return 0;
 }
 
+void toLowerString(char s[MAX])
+{
+  for (int i = 0; s[i] != '\0'; i++)
+  {
+    s[i] = tolower(s[i]);
+  }
+}
+
+int isPalindrome(char s[MAX])
+{
+  int len = strlen(s);
+  for (int i = 0; i < len / 2; i++)
+  {
+    if (s[i] != s[len - i - 1])
+      return 0;
+  }
+  return 1;
+}
+
+void substring(char dest[MAX], char src[MAX], int start, int end)
+{
+  int j = 0;
+  for (int i = start; i <= end; i++)
+  {
+    dest[j++] = src[i];
+  }
+  dest[j] = '\0';
+}
+
+void findLargestPalindrome(char input[MAX], char result[MAX])
+{
+  char lowerInput[MAX];
+  char temp[MAX];
+  int maxLength = 0;
+
+  strcpy(lowerInput, input);
+  toLowerString(lowerInput);
+
+  for (int i = 0; i < strlen(lowerInput); i++)
+  {
+    for (int j = i; j < strlen(lowerInput); j++)
+    {
+      substring(temp, lowerInput, i, j);
+      if (isPalindrome(temp) && strlen(temp) > maxLength)
+      {
+        maxLength = strlen(temp);
+        substring(result, input, i, j);
+      }
+    }
+  }
+
+  if (maxLength == 0)
+  {
+    result[0] = '\0';
+  }
+}
