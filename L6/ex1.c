@@ -24,7 +24,7 @@ Person readPerson()
   Person p;
 
   printf("Digite o nome: ");
-  fgets(, sizeof(p.name), stdin);
+  fgets(p.name, sizeof(p.name), stdin);
   p.name[strcspn(p.name, "\n")] = '\0'; // remove o \n do final
 
   printf("Digite a idade: ");
