@@ -1,11 +1,26 @@
 #include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
-/**
- * @description: Wipes the whole queue.
- */
+// Create a new product node
+Product *createProduct(int id, const char *name, float price, int count)
+{
+  Product *newNode = (Product *)malloc(sizeof(Product));
+  if (!newNode)
+  {
+    printf("Memory allocation failed!\n");
+    exit(1);
+  }
+  newNode->id = id;
+  strncpy(newNode->name, name, NAME_MAX_CHAR - 1);
+  newNode->name[NAME_MAX_CHAR - 1] = '\0';
+  newNode->price = price;
+  newNode->inventoryCount = count;
+  newNode->next = NULL;
+  return newNode;
+}
+
 void clear(Product *headNode)
 {
   Product *current = headNode->next;
@@ -17,38 +32,25 @@ void clear(Product *headNode)
     free(current);
     current = nextNode;
   }
-
   headNode->next = NULL;
 }
 
-/**
- * @description: Checks is the queue is empty.
- * @returns {bool} True if the queue has no nodes.
- */
-bool isEmpty(Product *headNode)
+int isEmpty(Product *headNode)
 {
   return headNode->next == NULL;
 }
 
-/**
- * @description: Adds a new element to the end of the queue.
- */
 void enqueue(Product *headNode, Product *newNode)
 {
   newNode->next = NULL;
-  Product *tempNode = headNode;
-
-  while (tempNode->next != NULL)
+  Product *temp = headNode;
+  while (temp->next != NULL)
   {
-    tempNode = tempNode->next;
+    temp = temp->next;
   }
-
-  tempNode->next = newNode;
+  temp->next = newNode;
 }
 
-/**
- * @description: Removes the first element from the queue
- */
 Product *dequeue(Product *headNode)
 {
   if (isEmpty(headNode))
@@ -60,6 +62,24 @@ Product *dequeue(Product *headNode)
   Product *firstNode = headNode->next;
   headNode->next = firstNode->next;
   firstNode->next = NULL;
+  return firstNode;
+}
 
-  return firstNode; // return for processing or freeing
+void printQueue(Product *headNode)
+{
+  if (isEmpty(headNode))
+  {
+    printf("Queue is empty.\n");
+    return;
+  }
+
+  Product *current = headNode->next;
+  printf("\n--- Queue Contents ---\n");
+  while (current != NULL)
+  {
+    printf("ID: %d | Name: %s | Price: %.2f | Stock: %d\n",
+           current->id, current->name, current->price, current->inventoryCount);
+    current = current->next;
+  }
+  printf("----------------------\n");
 }

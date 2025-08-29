@@ -12,4 +12,12 @@ typedef struct _Product
   struct _Product *next;
 } Product;
 
+// Function prototypes
+Product *createProduct(int id, const char *name, float price, int count);
+void clear(Product *headNode);
+int isEmpty(Product *headNode);
+void enqueue(Product *headNode, Product *newNode);
+Product *dequeue(Product *headNode);
+void printQueue(Product *headNode);
+
 #endif
